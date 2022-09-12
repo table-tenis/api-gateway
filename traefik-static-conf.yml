@@ -1,0 +1,25 @@
+entryPoints:
+  web:
+   address: ":81"
+providers:
+  file:
+    filename: "traefik-dynamic-conf.yml"
+    watch: true
+ # consulCatalog:
+ #   defaultRule: "Host(`localhost`)"
+ #   endpoint:
+ #     address: "localhost:8500"
+ #     scheme: http
+     
+ # consul:
+ #   rootKey: "traefik"
+ #   endpoints:
+ #     - "http://localhost:8500"
+
+  # redis:
+  #   endpoints:
+  #     - "localhost:6379"
+  #   rootKey: "traefik"
+api:
+  insecure: true
+  dashboard: true

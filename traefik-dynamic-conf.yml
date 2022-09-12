@@ -1,0 +1,29 @@
+http:
+  routers:
+    router0:
+      entryPoints:
+      - web
+      service: account-manager
+      rule: PathPrefix(`/api/xface/v1/acc`)
+    router1:
+      entryPoints:
+      - web
+      middlewares:
+      - test-auth
+      service: enterprise-manager
+      rule: PathPrefix(`/api/xface/v1/enterprises`) && Method(`POST`, `GET`)
+  services:
+    account-manager:
+      loadBalancer:
+        servers:
+        - url: http://172.21.100.174:9082
+    enterprise-manager:
+      loadBalancer:
+        servers:
+        - url: http://172.21.100.174:9083
+
+  middlewares:
+    test-auth:
+      forwardAuth:
+        address: "http://172.21.100.174:9082/api/xface/v1/acc/accounts/auth"
+        trustForwardHeader: true
