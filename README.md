@@ -19,13 +19,18 @@
 - Routing api services.
 - Load balance.
 ## **How To Run**
-- Run traefik api gateway.
+- Run traefik api gateway with file provider.
 ```
 sudo ./traefik --configfile=traefik-static-conf.yml
 ```
+- Run traefik api gateway with docker provider.
+```
+docker-compose -p traefik up -d
+```
 - View services registered in traefik api gateway.
 ```
-http://localhost:8080/dashboard#/
+http://localhost:8080/dashboard#/ for static file provider
+http://localhost:8880/dashboard#/ for docker provider
 ```
 
 

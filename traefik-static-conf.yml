@@ -1,6 +1,6 @@
 entryPoints:
   web:
-   address: ":81"
+   address: ":82"
 providers:
   file:
     filename: "traefik-dynamic-conf.yml"
